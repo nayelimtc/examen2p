@@ -20,7 +20,6 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Transaccion {
     
-    // Constantes para los tipos de transacción válidos
     public static final String TIPO_RETIRO = "RETIRO";
     public static final String TIPO_DEPOSITO = "DEPOSITO";
     

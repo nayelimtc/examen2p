@@ -1,4 +1,4 @@
-package com.banquito.management.exception;
+package com.banquito.core.examen.exception;
 
 public class TransaccionException extends RuntimeException {
 

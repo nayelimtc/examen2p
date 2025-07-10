@@ -1,7 +1,7 @@
-package com.banquito.management.controller.mapper;
+package com.banquito.core.examen.controller.mapper;
 
-import com.banquito.management.controller.dto.CajeroDTO;
-import com.banquito.management.model.Cajero;
+import com.banquito.core.examen.controller.dto.CajeroDTO;
+import com.banquito.core.examen.model.Cajero;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;

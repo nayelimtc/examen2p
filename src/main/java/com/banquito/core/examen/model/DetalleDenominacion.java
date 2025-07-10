@@ -15,7 +15,6 @@ import java.util.Map;
 @ToString
 public class DetalleDenominacion {
     
-    // Constantes para las denominaciones válidas
     public static final String DENOMINACION_UNO = "1";
     public static final String DENOMINACION_CINCO = "5";
     public static final String DENOMINACION_DIEZ = "10";
@@ -23,7 +22,7 @@ public class DetalleDenominacion {
     public static final String DENOMINACION_CINCUENTA = "50";
     public static final String DENOMINACION_CIEN = "100";
     
-    // Mapa para obtener el valor numérico de cada denominación
+
     private static final Map<String, BigDecimal> VALORES_DENOMINACION = new HashMap<>();
     
     static {

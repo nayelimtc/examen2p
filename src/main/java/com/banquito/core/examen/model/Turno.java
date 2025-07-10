@@ -20,7 +20,6 @@ import java.util.List;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Turno {
     
-    // Constantes para los estados válidos
     public static final String ESTADO_ABIERTO = "ABIERTO";
     public static final String ESTADO_CERRADO = "CERRADO";
     

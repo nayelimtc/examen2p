@@ -1,13 +1,13 @@
-package com.banquito.management.controller;
+package com.banquito.core.examen.controller;
 
-import com.banquito.management.controller.dto.ProcesarTransaccionDTO;
-import com.banquito.management.controller.dto.TransaccionDTO;
-import com.banquito.management.controller.mapper.DetalleDenominacionMapper;
-import com.banquito.management.controller.mapper.TransaccionMapper;
-import com.banquito.management.exception.NotFoundException;
-import com.banquito.management.exception.TransaccionException;
-import com.banquito.management.model.Transaccion;
-import com.banquito.management.service.TransaccionService;
+import com.banquito.core.examen.controller.dto.ProcesarTransaccionDTO;
+import com.banquito.core.examen.controller.dto.TransaccionDTO;
+import com.banquito.core.examen.controller.mapper.DetalleDenominacionMapper;
+import com.banquito.core.examen.controller.mapper.TransaccionMapper;
+import com.banquito.core.examen.exception.NotFoundException;
+import com.banquito.core.examen.exception.TransaccionException;
+import com.banquito.core.examen.model.Transaccion;
+import com.banquito.core.examen.service.TransaccionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;

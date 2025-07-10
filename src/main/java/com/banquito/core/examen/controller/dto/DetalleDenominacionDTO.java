@@ -1,6 +1,6 @@
-package com.banquito.management.controller.dto;
+package com.banquito.core.examen.controller.dto;
 
-import com.banquito.management.model.DetalleDenominacion;
+import com.banquito.core.examen.model.DetalleDenominacion;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Min;

@@ -1,4 +1,4 @@
-package com.banquito.management.controller.dto;
+package com.banquito.core.examen.controller.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
@@ -15,7 +15,7 @@ import java.util.List;
 public class CerrarTurnoDTO {
     
     @NotBlank(message = "El código del turno es requerido")
-    @Schema(description = "Código del turno", example = "CAJA01-CAJ001-20240101")
+    @Schema(description = "Código del turno", example = "CAJ001-20240101-0800")
     private String codigoTurno;
     
     @NotEmpty(message = "El dinero final es requerido")

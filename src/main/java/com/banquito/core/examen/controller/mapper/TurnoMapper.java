@@ -1,7 +1,7 @@
-package com.banquito.management.controller.mapper;
+package com.banquito.core.examen.controller.mapper;
 
-import com.banquito.management.controller.dto.TurnoDTO;
-import com.banquito.management.model.Turno;
+import com.banquito.core.examen.controller.dto.TurnoDTO;
+import com.banquito.core.examen.model.Turno;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
@@ -10,8 +10,7 @@ import java.util.List;
 
 @Mapper(
         componentModel = MappingConstants.ComponentModel.SPRING,
-        unmappedTargetPolicy = ReportingPolicy.IGNORE,
-        uses = {DetalleDenominacionMapper.class}
+        unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
 public interface TurnoMapper {
 

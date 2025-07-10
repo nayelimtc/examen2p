@@ -1,9 +1,8 @@
-package com.banquito.management.controller.mapper;
+package com.banquito.core.examen.controller.mapper;
 
-import com.banquito.management.controller.dto.DetalleDenominacionDTO;
-import com.banquito.management.model.DetalleDenominacion;
+import com.banquito.core.examen.controller.dto.DetalleDenominacionDTO;
+import com.banquito.core.examen.model.DetalleDenominacion;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
 import org.mapstruct.ReportingPolicy;
 
@@ -15,7 +14,6 @@ import java.util.List;
 )
 public interface DetalleDenominacionMapper {
 
-    @Mapping(target = "valorTotal", expression = "java(model.getValorTotal())")
     DetalleDenominacionDTO toDTO(DetalleDenominacion model);
     
     DetalleDenominacion toModel(DetalleDenominacionDTO dto);
