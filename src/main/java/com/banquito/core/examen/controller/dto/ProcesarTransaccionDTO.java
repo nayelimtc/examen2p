@@ -1,12 +1,12 @@
 package com.banquito.management.controller.dto;
 
-import com.banquito.management.enums.TipoTransaccion;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,8 +23,9 @@ public class ProcesarTransaccionDTO {
     private String turnoId;
     
     @NotNull(message = "El tipo de transacción es requerido")
-    @Schema(description = "Tipo de transacción", example = "RETIRO")
-    private TipoTransaccion tipo;
+    @Pattern(regexp = "^(RETIRO|DEPOSITO)$", message = "El tipo debe ser RETIRO o DEPOSITO")
+    @Schema(description = "Tipo de transacción", example = "RETIRO", allowableValues = {"RETIRO", "DEPOSITO"})
+    private String tipo;
     
     @NotNull(message = "El monto es requerido")
     @DecimalMin(value = "0.01", message = "El monto debe ser mayor a cero")

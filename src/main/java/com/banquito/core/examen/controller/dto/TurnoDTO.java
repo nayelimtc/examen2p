@@ -1,6 +1,5 @@
 package com.banquito.core.examen.controller.dto;
 
-import com.banquito.core.examen.enums.EstadoTurno;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +16,7 @@ public class TurnoDTO {
     @Schema(description = "ID del turno", example = "507f1f77bcf86cd799439011")
     private String id;
     
-    @Schema(description = "Código del turno", example = "CAJ001-20240101-0800")
+    @Schema(description = "Código del turno", example = "CAJA01-CAJ001-20240101")
     private String codigoTurno;
     
     @Schema(description = "ID del cajero", example = "507f1f77bcf86cd799439012")
@@ -26,11 +25,14 @@ public class TurnoDTO {
     @Schema(description = "Código del cajero", example = "CAJ001")
     private String codigoCajero;
     
+    @Schema(description = "Código de la caja", example = "CAJA01")
+    private String codigoCaja;
+    
     @Schema(description = "Agencia", example = "MATRIZ")
     private String agencia;
     
-    @Schema(description = "Estado del turno", example = "ABIERTO")
-    private EstadoTurno estado;
+    @Schema(description = "Estado del turno", example = "ABIERTO", allowableValues = {"ABIERTO", "CERRADO"})
+    private String estado;
     
     @Schema(description = "Fecha de apertura", example = "2024-01-01T08:00:00")
     private LocalDateTime fechaApertura;

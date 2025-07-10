@@ -15,7 +15,7 @@ import java.util.List;
 public class CerrarTurnoDTO {
     
     @NotBlank(message = "El código del turno es requerido")
-    @Schema(description = "Código del turno", example = "CAJ001-20240101-0800")
+    @Schema(description = "Código del turno", example = "CAJA01-CAJ001-20240101")
     private String codigoTurno;
     
     @NotEmpty(message = "El dinero final es requerido")

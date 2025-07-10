@@ -1,6 +1,5 @@
 package com.banquito.management.controller.dto;
 
-import com.banquito.management.enums.TipoTransaccion;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,8 +28,11 @@ public class TransaccionDTO {
     @Schema(description = "Código del cajero", example = "CAJ001")
     private String codigoCajero;
     
-    @Schema(description = "Tipo de transacción", example = "RETIRO")
-    private TipoTransaccion tipo;
+    @Schema(description = "Código de la caja", example = "CAJA01")
+    private String codigoCaja;
+    
+    @Schema(description = "Tipo de transacción", example = "RETIRO", allowableValues = {"RETIRO", "DEPOSITO"})
+    private String tipo;
     
     @Schema(description = "Monto de la transacción", example = "100.00")
     private BigDecimal monto;

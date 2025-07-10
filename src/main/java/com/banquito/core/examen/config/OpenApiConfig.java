@@ -1,4 +1,4 @@
-package com.banquito.examen.config;
+package com.banquito.core.examen.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

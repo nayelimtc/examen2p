@@ -19,8 +19,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 
 @RestController
 @RequestMapping("/v1/turnos")
@@ -101,7 +102,7 @@ public class TurnoController {
             @ApiResponse(responseCode = "404", description = "Turno no encontrado")
     })
     public ResponseEntity<TurnoDTO> obtenerTurnoPorCodigo(
-            @Parameter(description = "Código del turno", example = "CAJ001-20240101-0800")
+            @Parameter(description = "Código del turno", example = "CAJA01-CAJ001-20240101")
             @PathVariable String codigoTurno) {
         log.info("Buscando turno por código: {}", codigoTurno);
         
@@ -119,13 +120,13 @@ public class TurnoController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Turnos encontrados")
     })
-    public ResponseEntity<List<TurnoDTO>> obtenerTurnosAbiertos(
+    public ResponseEntity<Page<TurnoDTO>> obtenerTurnosAbiertos(
             @Parameter(description = "Código de la agencia", example = "MATRIZ")
-            @PathVariable String agencia) {
+            @PathVariable String agencia,
+            @PageableDefault(size = 20, page = 0) Pageable pageable) {
         log.info("Buscando turnos abiertos para agencia: {}", agencia);
-        
-        List<Turno> turnos = turnoService.findByAgencia(agencia);
-        return ResponseEntity.ok(turnoMapper.toDTOList(turnos));
+        Page<TurnoDTO> page = turnoService.findByAgencia(agencia, pageable).map(turnoMapper::toDTO);
+        return ResponseEntity.ok(page);
     }
 
     @GetMapping("/alertas")
@@ -133,11 +134,11 @@ public class TurnoController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Turnos con alertas encontrados")
     })
-    public ResponseEntity<List<TurnoDTO>> obtenerTurnosConAlerta() {
+    public ResponseEntity<Page<TurnoDTO>> obtenerTurnosConAlerta(
+            @PageableDefault(size = 20, page = 0) Pageable pageable) {
         log.info("Buscando turnos con alertas");
-        
-        List<Turno> turnos = turnoService.findTurnosConAlerta();
-        return ResponseEntity.ok(turnoMapper.toDTOList(turnos));
+        Page<TurnoDTO> page = turnoService.findTurnosConAlerta(pageable).map(turnoMapper::toDTO);
+        return ResponseEntity.ok(page);
     }
 
     @ExceptionHandler({NotFoundException.class})

@@ -1,4 +1,4 @@
-package com.banquito.core.examen.controller;
+package com.banquito.management.controller;
 
 import com.banquito.management.controller.dto.ProcesarTransaccionDTO;
 import com.banquito.management.controller.dto.TransaccionDTO;
@@ -18,8 +18,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 
 @RestController
 @RequestMapping("/v1/transacciones")
@@ -95,13 +96,13 @@ public class TransaccionController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Transacciones encontradas")
     })
-    public ResponseEntity<List<TransaccionDTO>> obtenerTransaccionesPorTurno(
+    public ResponseEntity<Page<TransaccionDTO>> obtenerTransaccionesPorTurno(
             @Parameter(description = "ID del turno", example = "507f1f77bcf86cd799439011")
-            @PathVariable String turnoId) {
+            @PathVariable String turnoId,
+            @PageableDefault(size = 20, page = 0) Pageable pageable) {
         log.info("Buscando transacciones para turno: {}", turnoId);
-        
-        List<Transaccion> transacciones = transaccionService.findByTurnoId(turnoId);
-        return ResponseEntity.ok(transaccionMapper.toDTOList(transacciones));
+        Page<TransaccionDTO> page = transaccionService.findByTurnoId(turnoId, pageable).map(transaccionMapper::toDTO);
+        return ResponseEntity.ok(page);
     }
 
     @GetMapping("/cajero/{cajeroId}")
@@ -109,13 +110,13 @@ public class TransaccionController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Transacciones encontradas")
     })
-    public ResponseEntity<List<TransaccionDTO>> obtenerTransaccionesPorCajero(
+    public ResponseEntity<Page<TransaccionDTO>> obtenerTransaccionesPorCajero(
             @Parameter(description = "ID del cajero", example = "507f1f77bcf86cd799439012")
-            @PathVariable String cajeroId) {
+            @PathVariable String cajeroId,
+            @PageableDefault(size = 20, page = 0) Pageable pageable) {
         log.info("Buscando transacciones para cajero: {}", cajeroId);
-        
-        List<Transaccion> transacciones = transaccionService.findByCajeroId(cajeroId);
-        return ResponseEntity.ok(transaccionMapper.toDTOList(transacciones));
+        Page<TransaccionDTO> page = transaccionService.findByCajeroId(cajeroId, pageable).map(transaccionMapper::toDTO);
+        return ResponseEntity.ok(page);
     }
 
     @GetMapping("/cliente/{clienteId}")
@@ -123,13 +124,13 @@ public class TransaccionController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Transacciones encontradas")
     })
-    public ResponseEntity<List<TransaccionDTO>> obtenerTransaccionesPorCliente(
+    public ResponseEntity<Page<TransaccionDTO>> obtenerTransaccionesPorCliente(
             @Parameter(description = "ID del cliente", example = "CLI001")
-            @PathVariable String clienteId) {
+            @PathVariable String clienteId,
+            @PageableDefault(size = 20, page = 0) Pageable pageable) {
         log.info("Buscando transacciones para cliente: {}", clienteId);
-        
-        List<Transaccion> transacciones = transaccionService.findByClienteId(clienteId);
-        return ResponseEntity.ok(transaccionMapper.toDTOList(transacciones));
+        Page<TransaccionDTO> page = transaccionService.findByClienteId(clienteId, pageable).map(transaccionMapper::toDTO);
+        return ResponseEntity.ok(page);
     }
 
     @ExceptionHandler({NotFoundException.class})
