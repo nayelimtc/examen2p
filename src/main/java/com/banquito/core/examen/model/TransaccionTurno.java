@@ -8,21 +8,19 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@Document(collection = "turno_cajas")
-public class TurnoCaja {
+@Document(collection = "transacciones_turnos")
+public class TransaccionTurno {
     @Id
     private String id;
     private String codigoCaja;
     private String codigoCajero;
     private String codigoTurno;
-    private BigDecimal montoInicial;
-    private LocalDateTime fechaInicio;
-    private LocalDateTime fechaCierre;
-    private BigDecimal montoFinal;
-    private String estado; // ABIERTO, CERRADO
-    private List<Denominacion> denominacionesIniciales;
-    private List<Denominacion> denominacionesFinales;
+    private String tipoTransaccion; // INICIO, AHORRO, DEPOSITO, CIERRE
+    private BigDecimal montoTotal;
+    private List<Denominacion> denominaciones;
+    private LocalDateTime fechaTransaccion;
+    private String estado; // ACTIVO, INACTIVO
     private LocalDateTime creationDate;
     private LocalDateTime lastModifiedDate;
     private Long version;
-}
+} 
